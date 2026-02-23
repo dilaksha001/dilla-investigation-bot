@@ -18,7 +18,7 @@ LOG_FILE = os.environ.get('WEBHOOK_LOG_FILE', 'webhook_logs.json')
 LOG_LOCK = threading.Lock()
 
 def perform_reverse_dns(ip_address):
-    """
+    """
     Performs a reverse DNS lookup for a given IP address.
     Returns the hostname if found, otherwise 'Unknown' or an error message.
     """
