@@ -23,7 +23,7 @@ def perform_reverse_dns(ip_address):
     Returns the hostname if found, otherwise 'Unknown' or an error message.
     """
     try:
-        # socket.gethostbyaddr attempts to resolve an IP address to a hostname.
+        # socket.gethostbyaddr attempts to resolve an IP address to a hostname.
         hostname, _, _ = socket.gethostbyaddr(ip_address)
         return hostname
     except socket.herror:
