@@ -71,7 +71,6 @@ def webhook_listener():
     # Prioritize 'X-Forwarded-For' and 'CF-Connecting-IP' as they are commonly used by proxies
     # and load balancers to preserve the original client IP. Fallback to
 
-
 request.remote_addr.
     client_ip = request.remote_addr
     x_forwarded_for = headers.get('X-Forwarded-For')
