@@ -1,0 +1,4 @@
+Flask
+gunicorn
+user-agents
+ua-parser
