@@ -36,9 +36,7 @@ def perform_reverse_dns(ip_address):
         # Catch any other potential errors
         return f"Error: {e}"
 
-@app.route('/',
-
-methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH'])
+@app.route('/', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH'])
 @app.route('/webhook', methods=['GET', 'POST', 'PUT', 'DELETE', 'PATCH'])
 def webhook_listener():
     """
@@ -69,8 +67,7 @@ def webhook_listener():
 
     # 3. Identify the client's IP address.
     # Prioritize 'X-Forwarded-For' and 'CF-Connecting-IP' as they are commonly used by proxies
-    # and load balancers to preserve the original client IP. Fallback to
-    request.remote_addr.
+    # and load balancers to preserve the original client IP. Fallback to request.remote_addr.
     client_ip = request.remote_addr
     x_forwarded_for = headers.get('X-Forwarded-For')
     cf_connecting_ip = headers.get('CF-Connecting-IP') # Cloudflare's specific header
@@ -100,10 +97,7 @@ def webhook_listener():
         ua_parser_result["browser"] = user_agent.browser.family if user_agent.browser.family else "Unknown"
         ua_parser_result["device"] = user_agent.device.family if user_agent.device.family else "Unknown"
         
-        # Heuristic checks for common HTTP client
-
-
-libraries.
+        # Heuristic checks for common HTTP client libraries.
         lower_ua = user_agent_string.lower()
         if "curl" in lower_ua:
             ua_parser_result["library_or_client"] = "curl"
@@ -132,9 +126,7 @@ libraries.
     # 6. Log all these details into a structured JSON file with timestamps.
     # We will use the JSON Lines (JSONL) format for easier appending and parsing later.
     log_entry = {
-
-
-"timestamp": timestamp,
+        "timestamp": timestamp,
         "method": request.method,
         "path": request.path,
         "remote_addr": request.remote_addr, # Original IP seen by Flask
@@ -166,9 +158,6 @@ libraries.
 
 if __name__ == '__main__':
     # This block runs when the script is executed directly (e.g., python app.py).
-    # It's for local development and
-
-
-testing. In production, a WSGI server like Gunicorn will be used.
+    # It's for local development and testing. In production, a WSGI server like Gunicorn will be used.
     print(f"Starting Flask app locally. Logs will be saved to {LOG_FILE}")
     app.run(host='0.0.0.0', port=5000, debug=True)
