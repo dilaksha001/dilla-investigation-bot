@@ -1,4 +1,4 @@
 Flask
-gunicorn
 user-agents
-ua-parser
+requests
+gunicorn
